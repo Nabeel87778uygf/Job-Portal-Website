@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "@/config/api";
 
 const AdminDashboard = () => {
     const [jobs, setJobs] = useState([]);
@@ -11,7 +12,7 @@ const AdminDashboard = () => {
 
     const fetchJobs = async () => {
         try {
-            const res = await fetch("http://localhost:4000/api/admin/jobs", {
+            const res = await fetch(`${API_BASE_URL}/api/admin/jobs`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
 
     const fetchDashboard = async () => {
         try {
-            const res = await fetch("http://localhost:4000/api/admin/dashboard", {
+            const res = await fetch(`${API_BASE_URL}/api/admin/dashboard`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -43,7 +44,7 @@ const AdminDashboard = () => {
 
     const approveJob = async (id) => {
         try {
-            await fetch(`http://localhost:4000/api/admin/job/${id}/approve`, {
+            await fetch(`${API_BASE_URL}/api/admin/job/${id}/approve`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`

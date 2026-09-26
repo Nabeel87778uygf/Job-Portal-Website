@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "@/config/api";
 
 const AppliedJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -12,7 +13,7 @@ const AppliedJobs = () => {
             setLoading(true);
 
             const res = await fetch(
-                "http://localhost:4000/api/user/applied-jobs",
+                `${API_BASE_URL}/api/user/applied-jobs`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

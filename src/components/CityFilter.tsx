@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ChevronDown } from "lucide-react";
+import { API_BASE_URL } from "@/config/api";
 
 const CityFilter = ({ location, setLocation }) => {
     const [cities, setCities] = useState([]);
@@ -10,7 +11,7 @@ const CityFilter = ({ location, setLocation }) => {
     useEffect(() => {
         const fetchCities = async () => {
             const res = await axios.get(
-                "http://localhost:4000/api/jobs/cities"
+                `${API_BASE_URL}/api/jobs/cities`
             );
 
             setCities(res.data.cities || []);

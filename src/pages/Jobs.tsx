@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "@/config/api";
 
 const Jobs = () => {
 
@@ -34,7 +35,7 @@ const Jobs = () => {
 
                 setLoading(true);
 
-                let url = "http://localhost:4000/api/jobs/search?";
+                let url = `${API_BASE_URL}/api/jobs/search?`;
 
                 if (keyword) url += `keyword=${keyword}&`;
 
@@ -67,7 +68,7 @@ const Jobs = () => {
         try {
 
             const res = await fetch(
-                `http://localhost:4000/api/jobs/${selectedJob?._id}/apply`,
+                `${API_BASE_URL}/api/jobs/${selectedJob?._id}/apply`,
                 {
                     method: "POST",
 

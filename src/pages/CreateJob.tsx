@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "@/config/api";
 
 const CreateJob = () => {
 
@@ -27,7 +28,7 @@ const CreateJob = () => {
             }
 
             const res = await axios.post(
-                "http://localhost:4000/api/jobs",
+                `${API_BASE_URL}/api/jobs`,
                 form,
                 {
                     headers: {

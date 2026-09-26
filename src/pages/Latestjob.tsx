@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "@/config/api";
 
 const LatestJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -10,7 +11,7 @@ const LatestJobs = () => {
             setLoading(true);
 
             const res = await axios.get(
-                "http://localhost:4000/api/jobs/latest"
+                `${API_BASE_URL}/api/jobs/latest`
             );
 
             setJobs(res.data.jobs || []);
